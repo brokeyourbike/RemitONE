@@ -71,6 +71,10 @@ class GetTransactionsTest extends TestCase
 
         $this->assertInstanceOf(TransactionsResponse::class, $response);
         $this->assertSame(StatusCodeEnum::SUCCESS->value, $response->getStatus());
+        $this->assertCount(1, $response->getResult()->getCount());
         $this->assertCount(1, $response->getResult()->getTransactionsList());
+
+        $transactionDecoded = $response->getResult()->getTransactionsList()[0];
+        $this->assertInstanceOf(Transaction::class, $transactionDecoded);
     }
 }

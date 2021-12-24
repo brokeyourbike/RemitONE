@@ -9,6 +9,7 @@
 namespace BrokeYourBike\RemitOne\Tests;
 
 use Psr\Http\Message\ResponseInterface;
+use BrokeYourBike\RemitOne\Models\TransactionStatusResult;
 use BrokeYourBike\RemitOne\Models\TransactionStatusResponse;
 use BrokeYourBike\RemitOne\Interfaces\UserInterface;
 use BrokeYourBike\RemitOne\Interfaces\TransactionInterface;
@@ -85,5 +86,8 @@ class GetTransactionStatusTest extends TestCase
 
         $this->assertInstanceOf(TransactionStatusResponse::class, $response);
         $this->assertSame(StatusCodeEnum::SUCCESS->value, $response->getStatus());
+        $this->assertInstanceOf(TransactionStatusResult::class, $response->getResult());
+        $this->assertSame($this->reference, $response->getResult()->getReference());
+        $this->assertSame(TransactionStatusEnum::SENT_FOR_PAY->value, $response->getResult()->getStatus());
     }
 }
