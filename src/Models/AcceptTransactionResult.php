@@ -8,9 +8,6 @@
 
 namespace BrokeYourBike\RemitOne\Models;
 
-use BrokeYourBike\RemitOne\Models\AcceptTransactionsWrapper;
-use BrokeYourBike\RemitOne\Models\AcceptTransaction;
-
 /**
  * @author Ivan Stasiuk <ivan@stasi.uk>
  */
