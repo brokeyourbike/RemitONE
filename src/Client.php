@@ -25,6 +25,7 @@ use Doctrine\Common\Annotations\AnnotationReader;
 use BrokeYourBike\ResolveUri\ResolveUriTrait;
 use BrokeYourBike\RemitOne\Models\TransactionStatusResponse;
 use BrokeYourBike\RemitOne\Models\ProcessTransactionResponse;
+use BrokeYourBike\RemitOne\Models\ErrorTransactionResponse;
 use BrokeYourBike\RemitOne\Models\AcceptTransactionResponse;
 use BrokeYourBike\RemitOne\Interfaces\UserInterface;
 use BrokeYourBike\RemitOne\Interfaces\TransactionInterface;
@@ -154,7 +155,7 @@ class Client implements HttpClientInterface
         TransactionInterface $transaction,
         string $errorReason,
         ?string $errorDetails = null
-    ): ResponseInterface {
+    ): ErrorTransactionResponse {
         if ($transaction instanceof SourceModelInterface) {
             $this->setSourceModel($transaction);
         }
@@ -164,7 +165,7 @@ class Client implements HttpClientInterface
         }
 
         $data = [
-            'trans_ref' => $transaction->reference,
+            'trans_ref' => $transaction->getReference(),
             'error_reason' => $errorReason,
         ];
 
@@ -176,7 +177,8 @@ class Client implements HttpClientInterface
             $data['bank_name'] = $transaction->getBankName();
         }
 
-        return $this->performRequest(HttpMethodEnum::POST, 'transaction/errorPayoutTransaction', $data);
+        $response = $this->performRequest(HttpMethodEnum::POST, 'transaction/errorPayoutTransaction', $data);
+        return $this->serializer->deserialize($response->getBody(), ErrorTransactionResponse::class, 'xml');
     }
 
     public function updateTransactionCollectionPin(TransactionInterface $transaction, string $collectionPin): ResponseInterface
