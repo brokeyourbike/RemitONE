@@ -11,16 +11,21 @@ namespace BrokeYourBike\RemitOne\Models;
 /**
  * @author Ivan Stasiuk <ivan@stasi.uk>
  */
-abstract class Response
+class TransactionDetailsResponse
 {
-    public string $responseId;
-    public string $status;
-    public ?object $result;
+    public function __construct(
+        private string $status,
+        private TransactionDetailsResult $result,
+    ) {
+    }
 
-    public function __construct(string $responseId, string $status, ?object $result = null)
+    public function getStatus(): string
     {
-        $this->responseId = $responseId;
-        $this->status = $status;
-        $this->result = $result;
+        return $this->status;
+    }
+
+    public function getResult(): TransactionDetailsResult
+    {
+        return $this->result;
     }
 }

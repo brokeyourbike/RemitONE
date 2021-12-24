@@ -24,6 +24,7 @@ use GuzzleHttp\ClientInterface;
 use Doctrine\Common\Annotations\AnnotationReader;
 use BrokeYourBike\ResolveUri\ResolveUriTrait;
 use BrokeYourBike\RemitOne\Models\TransactionStatusResponse;
+use BrokeYourBike\RemitOne\Models\TransactionDetailsResponse;
 use BrokeYourBike\RemitOne\Models\ProcessTransactionResponse;
 use BrokeYourBike\RemitOne\Models\ErrorTransactionResponse;
 use BrokeYourBike\RemitOne\Models\AcceptTransactionResponse;
@@ -83,15 +84,16 @@ class Client implements HttpClientInterface
         ]);
     }
 
-    public function getTransactionDetails(TransactionInterface $transaction): ResponseInterface
+    public function getTransactionDetails(TransactionInterface $transaction): TransactionDetailsResponse
     {
         if ($transaction instanceof SourceModelInterface) {
             $this->setSourceModel($transaction);
         }
 
-        return $this->performRequest(HttpMethodEnum::POST, 'transaction/getPayoutTransactionDetails', [
+        $response = $this->performRequest(HttpMethodEnum::POST, 'transaction/getPayoutTransactionDetails', [
             'trans_ref' => $transaction->getReference(),
         ]);
+        return $this->serializer->deserialize($response->getBody(), TransactionDetailsResponse::class, 'xml');
     }
 
     public function getTransactionStatus(TransactionInterface $transaction): TransactionStatusResponse
