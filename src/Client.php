@@ -13,15 +13,12 @@ use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
-use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
-use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\PropertyInfo\PropertyInfoExtractor;
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
 use Psr\Http\Message\ResponseInterface;
 use GuzzleHttp\ClientInterface;
-use Doctrine\Common\Annotations\AnnotationReader;
 use BrokeYourBike\ResolveUri\ResolveUriTrait;
 use BrokeYourBike\RemitOne\Models\TransactionStatusResponse;
 use BrokeYourBike\RemitOne\Models\TransactionDetailsResponse;
@@ -226,14 +223,12 @@ class Client implements HttpClientInterface
 
     private function makeSerializer(): SerializerInterface
     {
-        $loader = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
         $extractor = new PropertyInfoExtractor([], [new PhpDocExtractor(), new ReflectionExtractor()]);
 
         return new Serializer([
             new ArrayDenormalizer(),
             new DateTimeNormalizer(),
             new ObjectNormalizer(
-                classMetadataFactory: $loader,
                 propertyTypeExtractor: $extractor,
             ),
         ], [new XmlEncoder()]);
