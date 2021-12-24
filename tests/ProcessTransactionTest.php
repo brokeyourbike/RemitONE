@@ -14,6 +14,7 @@ use BrokeYourBike\RemitOne\Interfaces\UserInterface;
 use BrokeYourBike\RemitOne\Interfaces\TransactionInterface;
 use BrokeYourBike\RemitOne\Enums\UserTypeEnum;
 use BrokeYourBike\RemitOne\Enums\StatusCodeEnum;
+use BrokeYourBike\RemitOne\Enums\OperationResultStatusEnum;
 use BrokeYourBike\RemitOne\Client;
 
 /**
@@ -54,7 +55,7 @@ class ProcessTransactionTest extends TestCase
                     <trans_ref>'. $this->reference .'</trans_ref>
                     <sms_benef_payout>True</sms_benef_payout>
                     <sms_benef_payout_mobile>+447767123456</sms_benef_payout_mobile>
-                    <process_result>'. StatusCodeEnum::SUCCESS->value  .'</process_result>
+                    <process_result>'. OperationResultStatusEnum::SUCCESS->value  .'</process_result>
                     <message></message>
                 </result>
             </response>');
