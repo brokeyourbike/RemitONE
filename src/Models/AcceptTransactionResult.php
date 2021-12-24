@@ -44,6 +44,6 @@ class AcceptTransactionResult
      */
     public function getTransactionsList(): array
     {
-        return $this->transactions->transaction;
+        return $this->transactions->all();
     }
 }

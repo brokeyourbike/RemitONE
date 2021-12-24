@@ -22,4 +22,12 @@ class AcceptTransactionsWrapper
         private array $transaction,
     ) {
     }
+
+    /**
+     * @return AcceptTransaction[]
+     */
+    public function all(): array
+    {
+        return $this->transaction;
+    }
 }
