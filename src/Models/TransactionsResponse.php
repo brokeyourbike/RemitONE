@@ -11,21 +11,21 @@ namespace BrokeYourBike\RemitOne\Models;
 /**
  * @author Ivan Stasiuk <ivan@stasi.uk>
  */
-class AcceptTransactionsWrapper
+class TransactionsResponse
 {
-    /**
-     * @param AcceptTransaction[] $transaction
-     */
     public function __construct(
-        private array $transaction,
+        private string $status,
+        private TransactionsResult $result,
     ) {
     }
 
-    /**
-     * @return AcceptTransaction[]
-     */
-    public function getTransaction(): array
+    public function getStatus(): string
     {
-        return $this->transaction;
+        return $this->status;
+    }
+
+    public function getResult(): TransactionsResult
+    {
+        return $this->result;
     }
 }

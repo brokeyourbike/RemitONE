@@ -13,13 +13,17 @@ use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
+use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
+use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\PropertyInfo\PropertyInfoExtractor;
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
 use Psr\Http\Message\ResponseInterface;
 use GuzzleHttp\ClientInterface;
+use Doctrine\Common\Annotations\AnnotationReader;
 use BrokeYourBike\ResolveUri\ResolveUriTrait;
+use BrokeYourBike\RemitOne\Models\TransactionsResponse;
 use BrokeYourBike\RemitOne\Models\TransactionStatusResponse;
 use BrokeYourBike\RemitOne\Models\TransactionDetailsResponse;
 use BrokeYourBike\RemitOne\Models\ProcessTransactionResponse;
@@ -63,22 +67,25 @@ class Client implements HttpClientInterface
         return $this->user;
     }
 
-    public function getTransactions(): ResponseInterface
+    public function getTransactions(): TransactionsResponse
     {
-        return $this->performRequest(HttpMethodEnum::POST, 'transaction/getPayoutTransactions', []);
+        $response = $this->performRequest(HttpMethodEnum::POST, 'transaction/getPayoutTransactions', []);
+        return $this->serializer->deserialize($response->getBody(), TransactionsResponse::class, 'xml');
     }
 
-    public function getPendingTransactions(): ResponseInterface
+    public function getPendingTransactions(): TransactionsResponse
     {
-        return $this->performRequest(HttpMethodEnum::POST, 'transaction/getPendingPayoutTransactions', []);
+        $response = $this->performRequest(HttpMethodEnum::POST, 'transaction/getPendingPayoutTransactions', []);
+        return $this->serializer->deserialize($response->getBody(), TransactionsResponse::class, 'xml');
     }
 
-    public function getErrorTransactions(\DateTime $start, \DateTime $end): ResponseInterface
+    public function getErrorTransactions(\DateTime $start, \DateTime $end): TransactionsResponse
     {
-        return $this->performRequest(HttpMethodEnum::POST, 'transaction/getErrorTransactions', [
+        $response = $this->performRequest(HttpMethodEnum::POST, 'transaction/getErrorTransactions', [
             'from_date' => $start->format('Y-m-d'),
             'to_date' => $end->format('Y-m-d'),
         ]);
+        return $this->serializer->deserialize($response->getBody(), TransactionsResponse::class, 'xml');
     }
 
     public function getTransactionDetails(TransactionInterface $transaction): TransactionDetailsResponse
@@ -210,7 +217,6 @@ class Client implements HttpClientInterface
             default => \GuzzleHttp\RequestOptions::FORM_PARAMS,
         };
 
-        $options = [];
         $options[$option] = $data;
 
         if ($this->getSourceModel()) {
@@ -228,9 +234,7 @@ class Client implements HttpClientInterface
         return new Serializer([
             new ArrayDenormalizer(),
             new DateTimeNormalizer(),
-            new ObjectNormalizer(
-                propertyTypeExtractor: $extractor,
-            ),
+            new ObjectNormalizer(propertyTypeExtractor: $extractor),
         ], [new XmlEncoder()]);
     }
 }

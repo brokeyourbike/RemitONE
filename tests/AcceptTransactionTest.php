@@ -87,7 +87,12 @@ class AcceptTransactionTest extends TestCase
 
         $response = $api->acceptTransaction($transaction);
 
+
         $this->assertInstanceOf(AcceptTransactionResponse::class, $response);
         $this->assertSame(StatusCodeEnum::SUCCESS->value, $response->getStatus());
+        $this->assertSame(1, $response->getResult()->getTotalCount());
+        $this->assertSame(1, $response->getResult()->getSuccessCount());
+        $this->assertSame(0, $response->getResult()->getFailedCount());
+        $this->assertCount(1, $response->getResult()->getTransactionsList());
     }
 }

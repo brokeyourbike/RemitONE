@@ -9,20 +9,17 @@
 namespace BrokeYourBike\RemitOne\Tests;
 
 use Psr\Http\Message\ResponseInterface;
-use BrokeYourBike\RemitOne\Models\TransactionDetailsResult;
-use BrokeYourBike\RemitOne\Models\TransactionDetailsResponse;
-use BrokeYourBike\RemitOne\Models\Transaction;
+use BrokeYourBike\RemitOne\Models\TransactionsResponse;
 use BrokeYourBike\RemitOne\Interfaces\UserInterface;
-use BrokeYourBike\RemitOne\Interfaces\TransactionInterface;
 use BrokeYourBike\RemitOne\Enums\UserTypeEnum;
-use BrokeYourBike\RemitOne\Enums\TransactionStatusEnum;
 use BrokeYourBike\RemitOne\Enums\StatusCodeEnum;
+use BrokeYourBike\RemitOne\Enums\OperationResultStatusEnum;
 use BrokeYourBike\RemitOne\Client;
 
 /**
  * @author Ivan Stasiuk <ivan@stasi.uk>
  */
-class GetTransactionDetailsTest extends TestCase
+class GetTransactionsTest extends TestCase
 {
     private readonly string $xml;
 
@@ -30,23 +27,15 @@ class GetTransactionDetailsTest extends TestCase
     private string $password = 'john1234';
     private string $pin = '456';
 
-    private string $reference = '123445';
-
     protected function setUp(): void
     {
         parent::setUp();
-        $this->xml = file_get_contents(dirname(__FILE__) . '/Data/transaction_details.xml');
+        $this->xml = file_get_contents(dirname(__FILE__) . '/Data/transactions.xml');
     }
 
     /** @test */
     public function it_can_prepare_request(): void
     {
-        $transaction = $this->getMockBuilder(TransactionInterface::class)->getMock();
-        $transaction->method('getReference')->willReturn($this->reference);
-
-        /** @var TransactionInterface $transaction */
-        $this->assertInstanceOf(TransactionInterface::class, $transaction);
-
         $mockedUser = $this->getMockBuilder(UserInterface::class)->getMock();
         $mockedUser->method('getUrl')->willReturn('https://api.example/');
         $mockedUser->method('getType')->willReturn(UserTypeEnum::BANK);
@@ -62,10 +51,9 @@ class GetTransactionDetailsTest extends TestCase
         $mockedClient = \Mockery::mock(\GuzzleHttp\Client::class);
         $mockedClient->shouldReceive('request')->withArgs([
             'POST',
-            'https://api.example/transaction/getPayoutTransactionDetails',
+            'https://api.example/transaction/getPayoutTransactions',
             [
                 \GuzzleHttp\RequestOptions::FORM_PARAMS => [
-                    'trans_ref' => $this->reference,
                     'username' => $this->username,
                     'password' => $this->password,
                     'pin' => $this->pin,
@@ -79,16 +67,10 @@ class GetTransactionDetailsTest extends TestCase
          * */
         $api = new Client($mockedUser, $mockedClient);
 
-        $response = $api->getTransactionDetails($transaction);
-        $this->assertInstanceOf(TransactionDetailsResponse::class, $response);
-        $this->assertSame(StatusCodeEnum::SUCCESS->value, $response->getStatus());
+        $response = $api->getTransactions();
 
-        $transactionDecoded = $response->getResult()->getTransaction();
-        $this->assertInstanceOf(Transaction::class, $transactionDecoded);
-        $this->assertSame('RA20079127', $transactionDecoded->getReference());
-        $this->assertSame('Account', $transactionDecoded->getType());
-        $this->assertSame('HQ_OK', $transactionDecoded->getStatus());
-        $this->assertSame('1965-05-26', $transactionDecoded->getRemitterDateOfBirth());
-        $this->assertSame('+441234123412', $transactionDecoded->getRemitterMobileNumber());
+        $this->assertInstanceOf(TransactionsResponse::class, $response);
+        $this->assertSame(StatusCodeEnum::SUCCESS->value, $response->getStatus());
+        $this->assertCount(1, $response->getResult()->getTransactionsList());
     }
 }

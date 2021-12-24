@@ -11,10 +11,10 @@ namespace BrokeYourBike\RemitOne\Models;
 /**
  * @author Ivan Stasiuk <ivan@stasi.uk>
  */
-class AcceptTransactionsWrapper
+class TransactionsWrapper
 {
     /**
-     * @param AcceptTransaction[] $transaction
+     * @param Transaction[] $transaction
      */
     public function __construct(
         private array $transaction,
@@ -22,7 +22,7 @@ class AcceptTransactionsWrapper
     }
 
     /**
-     * @return AcceptTransaction[]
+     * @return Transaction[]
      */
     public function getTransaction(): array
     {
