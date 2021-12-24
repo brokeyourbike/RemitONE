@@ -10,10 +10,11 @@ namespace BrokeYourBike\RemitOne\Tests;
 
 use Psr\Http\Message\ResponseInterface;
 use BrokeYourBike\RemitOne\Models\TransactionsResponse;
+use BrokeYourBike\RemitOne\Models\Transaction;
+use BrokeYourBike\RemitOne\Models\AddressParts;
 use BrokeYourBike\RemitOne\Interfaces\UserInterface;
 use BrokeYourBike\RemitOne\Enums\UserTypeEnum;
 use BrokeYourBike\RemitOne\Enums\StatusCodeEnum;
-use BrokeYourBike\RemitOne\Enums\OperationResultStatusEnum;
 use BrokeYourBike\RemitOne\Client;
 
 /**
@@ -71,10 +72,11 @@ class GetTransactionsTest extends TestCase
 
         $this->assertInstanceOf(TransactionsResponse::class, $response);
         $this->assertSame(StatusCodeEnum::SUCCESS->value, $response->getStatus());
-        $this->assertCount(1, $response->getResult()->getCount());
+        $this->assertSame(1, $response->getResult()->getCount());
         $this->assertCount(1, $response->getResult()->getTransactionsList());
 
         $transactionDecoded = $response->getResult()->getTransactionsList()[0];
         $this->assertInstanceOf(Transaction::class, $transactionDecoded);
+        $this->assertInstanceOf(AddressParts::class, $transactionDecoded->getRemitterAddressParts());
     }
 }

@@ -9,6 +9,7 @@
 namespace BrokeYourBike\RemitOne\Tests;
 
 use Psr\Http\Message\ResponseInterface;
+use BrokeYourBike\RemitOne\Models\ProcessTransactionResult;
 use BrokeYourBike\RemitOne\Models\ProcessTransactionResponse;
 use BrokeYourBike\RemitOne\Interfaces\UserInterface;
 use BrokeYourBike\RemitOne\Interfaces\TransactionInterface;
@@ -56,7 +57,7 @@ class ProcessTransactionTest extends TestCase
                     <sms_benef_payout>True</sms_benef_payout>
                     <sms_benef_payout_mobile>+447767123456</sms_benef_payout_mobile>
                     <process_result>'. OperationResultStatusEnum::SUCCESS->value  .'</process_result>
-                    <message></message>
+                    <message>hello!</message>
                 </result>
             </response>');
 
@@ -86,5 +87,9 @@ class ProcessTransactionTest extends TestCase
 
         $this->assertInstanceOf(ProcessTransactionResponse::class, $response);
         $this->assertSame(StatusCodeEnum::SUCCESS->value, $response->getStatus());
+        $this->assertInstanceOf(ProcessTransactionResult::class, $response->getResult());
+        $this->assertSame($this->reference, $response->getResult()->getReference());
+        $this->assertSame(OperationResultStatusEnum::SUCCESS->value, $response->getResult()->getProcessResult());
+        $this->assertSame('hello!', $response->getResult()->getMessage());
     }
 }
