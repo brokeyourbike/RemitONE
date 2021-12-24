@@ -22,10 +22,10 @@ composer require brokeyourbike/remit-one-api-client
 use BrokeYourBike\RemitOne\Client;
 use BrokeYourBike\RemitOne\Interfaces\UserInterface;
 
-assert($config instanceof UserInterface);
+assert($user instanceof UserInterface);
 assert($httpClient instanceof \GuzzleHttp\ClientInterface);
 
-$apiClient = new Client($config, $httpClient);
+$apiClient = new Client($user, $httpClient);
 $apiClient->getPayoutTransactions();
 ```
 
