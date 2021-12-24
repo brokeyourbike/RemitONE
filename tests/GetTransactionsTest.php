@@ -78,5 +78,7 @@ class GetTransactionsTest extends TestCase
         $transactionDecoded = $response->getResult()->getTransactionsList()[0];
         $this->assertInstanceOf(Transaction::class, $transactionDecoded);
         $this->assertInstanceOf(AddressParts::class, $transactionDecoded->getRemitterAddressParts());
+        $this->assertSame('ra1 ra2', $transactionDecoded->getRemitterAddressParts()->getAddress());
+        $this->assertSame('a1 a2 a3', $transactionDecoded->getBeneficiaryAddress());
     }
 }

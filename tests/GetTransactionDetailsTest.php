@@ -9,13 +9,12 @@
 namespace BrokeYourBike\RemitOne\Tests;
 
 use Psr\Http\Message\ResponseInterface;
-use BrokeYourBike\RemitOne\Models\TransactionDetailsResult;
 use BrokeYourBike\RemitOne\Models\TransactionDetailsResponse;
 use BrokeYourBike\RemitOne\Models\Transaction;
+use BrokeYourBike\RemitOne\Models\AddressParts;
 use BrokeYourBike\RemitOne\Interfaces\UserInterface;
 use BrokeYourBike\RemitOne\Interfaces\TransactionInterface;
 use BrokeYourBike\RemitOne\Enums\UserTypeEnum;
-use BrokeYourBike\RemitOne\Enums\TransactionStatusEnum;
 use BrokeYourBike\RemitOne\Enums\StatusCodeEnum;
 use BrokeYourBike\RemitOne\Client;
 
@@ -90,5 +89,8 @@ class GetTransactionDetailsTest extends TestCase
         $this->assertSame('HQ_OK', $transactionDecoded->getStatus());
         $this->assertSame('1965-05-26', $transactionDecoded->getRemitterDateOfBirth());
         $this->assertSame('+441234123412', $transactionDecoded->getRemitterMobileNumber());
+
+        $this->assertInstanceOf(AddressParts::class, $transactionDecoded->getRemitterAddressParts());
+        $this->assertSame('ra1 ra2', $transactionDecoded->getRemitterAddressParts()->getAddress());
     }
 }

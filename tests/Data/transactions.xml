@@ -142,13 +142,13 @@
                     <![CDATA[]]>
                 </benef_card_number>
                 <benef_address1>
-                    <![CDATA[LAGOS]]>
+                    <![CDATA[a1]]>
                 </benef_address1>
                 <benef_address2>
-                    <![CDATA[]]>
+                    <![CDATA[a2]]>
                 </benef_address2>
                 <benef_address3>
-                    <![CDATA[]]>
+                    <![CDATA[a3]]>
                 </benef_address3>
                 <benef_city>
                     <![CDATA[LAGOS]]>
@@ -237,10 +237,10 @@
                         <![CDATA[]]>
                     </remitter_building_no>
                     <remitter_address1>
-                        <![CDATA[]]>
+                        <![CDATA[ra1]]>
                     </remitter_address1>
                     <remitter_address2>
-                        <![CDATA[]]>
+                        <![CDATA[ra2]]>
                     </remitter_address2>
                     <remitter_city>
                         <![CDATA[MANCHESTER]]>
