@@ -82,7 +82,7 @@ class ProcessTransactionTest extends TestCase
          * */
         $api = new Client($mockedUser, $mockedClient);
 
-        $response = $api->processPayoutTransaction($transaction, $this->payMethod);
+        $response = $api->processTransaction($transaction, $this->payMethod);
 
         $this->assertInstanceOf(ProcessTransactionResponse::class, $response);
         $this->assertSame(StatusCodeEnum::SUCCESS->value, $response->getStatus());

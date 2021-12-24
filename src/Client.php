@@ -64,12 +64,12 @@ class Client implements HttpClientInterface
         return $this->user;
     }
 
-    public function getPayoutTransactions(): ResponseInterface
+    public function getTransactions(): ResponseInterface
     {
         return $this->performRequest(HttpMethodEnum::POST, 'transaction/getPayoutTransactions', []);
     }
 
-    public function getPendingPayoutTransactions(): ResponseInterface
+    public function getPendingTransactions(): ResponseInterface
     {
         return $this->performRequest(HttpMethodEnum::POST, 'transaction/getPendingPayoutTransactions', []);
     }
@@ -82,7 +82,7 @@ class Client implements HttpClientInterface
         ]);
     }
 
-    public function getPayoutTransactionDetails(TransactionInterface $transaction): ResponseInterface
+    public function getTransactionDetails(TransactionInterface $transaction): ResponseInterface
     {
         if ($transaction instanceof SourceModelInterface) {
             $this->setSourceModel($transaction);
@@ -105,7 +105,7 @@ class Client implements HttpClientInterface
         return $this->serializer->deserialize($response->getBody(), TransactionStatusResponse::class, 'xml');
     }
 
-    public function acceptPayoutTransaction(TransactionInterface $transaction): AcceptTransactionResponse
+    public function acceptTransaction(TransactionInterface $transaction): AcceptTransactionResponse
     {
         if ($transaction instanceof SourceModelInterface) {
             $this->setSourceModel($transaction);
@@ -127,7 +127,7 @@ class Client implements HttpClientInterface
         return $this->serializer->deserialize($response->getBody(), AcceptTransactionResponse::class, 'xml');
     }
 
-    public function processPayoutTransaction(TransactionInterface $transaction, string $payMethod): ProcessTransactionResponse
+    public function processTransaction(TransactionInterface $transaction, string $payMethod): ProcessTransactionResponse
     {
         if ($transaction instanceof SourceModelInterface) {
             $this->setSourceModel($transaction);
@@ -150,10 +150,10 @@ class Client implements HttpClientInterface
         return $this->serializer->deserialize($response->getBody(), ProcessTransactionResponse::class, 'xml');
     }
 
-    public function errorPayoutTransaction(
+    public function errorTransaction(
         TransactionInterface $transaction,
         string $errorReason,
-        string $errorDetails = null
+        ?string $errorDetails = null
     ): ResponseInterface {
         if ($transaction instanceof SourceModelInterface) {
             $this->setSourceModel($transaction);

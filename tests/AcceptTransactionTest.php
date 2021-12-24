@@ -85,7 +85,7 @@ class AcceptTransactionTest extends TestCase
          * */
         $api = new Client($mockedUser, $mockedClient);
 
-        $response = $api->acceptPayoutTransaction($transaction);
+        $response = $api->acceptTransaction($transaction);
 
         $this->assertInstanceOf(AcceptTransactionResponse::class, $response);
         $this->assertSame(StatusCodeEnum::SUCCESS->value, $response->getStatus());
