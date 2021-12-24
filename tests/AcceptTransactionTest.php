@@ -10,6 +10,7 @@ namespace BrokeYourBike\RemitOne\Tests;
 
 use Psr\Http\Message\ResponseInterface;
 use BrokeYourBike\RemitOne\Models\AcceptTransactionResponse;
+use BrokeYourBike\RemitOne\Models\AcceptTransaction;
 use BrokeYourBike\RemitOne\Interfaces\UserInterface;
 use BrokeYourBike\RemitOne\Interfaces\TransactionInterface;
 use BrokeYourBike\RemitOne\Enums\UserTypeEnum;
@@ -58,7 +59,7 @@ class AcceptTransactionTest extends TestCase
                         <transaction>
                             <trans_ref>'. $this->reference .'</trans_ref>
                             <operation_result>'. OperationResultStatusEnum::SUCCESS->value .'</operation_result>
-                            <message></message>
+                            <message>some message</message>
                         </transaction>
                     </transactions>
                 </result>
@@ -94,5 +95,11 @@ class AcceptTransactionTest extends TestCase
         $this->assertSame(1, $response->getResult()->getSuccessCount());
         $this->assertSame(0, $response->getResult()->getFailedCount());
         $this->assertCount(1, $response->getResult()->getTransactionsList());
+
+        $transactionDecoded = $response->getResult()->getTransactionsList()[0];
+        $this->assertInstanceOf(AcceptTransaction::class, $transactionDecoded);
+        $this->assertSame($this->reference, $transactionDecoded->getReference());
+        $this->assertSame(OperationResultStatusEnum::SUCCESS->value, $transactionDecoded->getOperationResult());
+        $this->assertSame('some message', $transactionDecoded->getMessage());
     }
 }
