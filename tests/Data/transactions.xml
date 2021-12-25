@@ -42,13 +42,13 @@
                     <![CDATA[]]>
                 </benef_tel>
                 <benef_mobile>
-                    <![CDATA[]]>
+                    <![CDATA[+32323232]]>
                 </benef_mobile>
                 <benef_email>
-                    <![CDATA[]]>
+                    <![CDATA[benef@example.com]]>
                 </benef_email>
                 <benef_nationality>
-                    <![CDATA[]]>
+                    <![CDATA[UA]]>
                 </benef_nationality>
                 <collection_point>
                     <![CDATA[]]>
@@ -66,19 +66,19 @@
                     <![CDATA[NONE]]>
                 </benef_id_type>
                 <benef_id_detail>
-                    <![CDATA[]]>
+                    <![CDATA[NO1245]]>
                 </benef_id_detail>
                 <benef_ac>
                     <![CDATA[123412341234]]>
                 </benef_ac>
                 <benef_ac_type>
-                    <![CDATA[]]>
+                    <![CDATA[actype]]>
                 </benef_ac_type>
                 <benef_bank_swift_code>
-                    <![CDATA[]]>
+                    <![CDATA[SWIFT556]]>
                 </benef_bank_swift_code>
                 <benef_bank_iban>
-                    <![CDATA[]]>
+                    <![CDATA[IBAN887]]>
                 </benef_bank_iban>
                 <benef_bank_bsb_code>
                     <![CDATA[]]>
@@ -157,13 +157,13 @@
                     <![CDATA[]]>
                 </benef_state>
                 <benef_postcode>
-                    <![CDATA[]]>
+                    <![CDATA[BEN 445]]>
                 </benef_postcode>
                 <benef_mobiletransfer_number>
-                    <![CDATA[]]>
+                    <![CDATA[+12341234]]>
                 </benef_mobiletransfer_number>
                 <benef_mobiletransfer_network>
-                    <![CDATA[]]>
+                    <![CDATA[nortstar]]>
                 </benef_mobiletransfer_network>
                 <benef_mobiletransfer_network_credit_type>
                     <![CDATA[]]>
@@ -234,7 +234,7 @@
                 </remitter_address>
                 <remitter_address_parts>
                     <remitter_building_no>
-                        <![CDATA[]]>
+                        <![CDATA[building 123]]>
                     </remitter_building_no>
                     <remitter_address1>
                         <![CDATA[ra1]]>
@@ -249,7 +249,7 @@
                         <![CDATA[N/A]]>
                     </remitter_state>
                     <remitter_postcode>
-                        <![CDATA[]]>
+                        <![CDATA[123 POST]]>
                     </remitter_postcode>
                     <remitter_country>
                         <![CDATA[GB]]>
@@ -329,7 +329,7 @@
                 <receive_amount_creditlog_ccy>28394.16</receive_amount_creditlog_ccy>
                 <bank_charges_creditlog_ccy>0.00</bank_charges_creditlog_ccy>
                 <bank_charges_slabs_ccy>0.00</bank_charges_slabs_ccy>
-                <receive_amount_after_bank_charges>50.00</receive_amount_after_bank_charges>
+                <receive_amount_after_bank_charges>49.00</receive_amount_after_bank_charges>
                 <bank_sequence>26384</bank_sequence>
                 <pay_method></pay_method>
                 <issue_date></issue_date>

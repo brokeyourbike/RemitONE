@@ -3,48 +3,56 @@
     <status>SUCCESS</status>
     <result>
         <transaction>
-            <trans_ref>RA20079127</trans_ref>
-            <trans_type>Account</trans_type>
-            <status>HQ_OK</status>
-            <purpose></purpose>
-            <source_of_income></source_of_income>
-
-            <creation_date>2010-05-11 10:28:02.244553</creation_date>
-            <delivery_date>2010-05-18 00:00:00</delivery_date>
-            <processed_date></processed_date>
-            <processing_bank></processing_bank>
-            <processed_by></processed_by>
-
+            <trans_ref>LOL13241234</trans_ref>
+            <agent_trans_ref></agent_trans_ref>
+            <benef_trans_ref>LOL13241234</benef_trans_ref>
+            <status>SENT_FOR_PAY</status>
+            <creation_date>2021-10-29 15:23:52+01</creation_date>
+            <purpose>FAMILY SUPPORT</purpose>
+            <source_of_income>SALARY</source_of_income>
+            <processing_bank>250972</processing_bank>
+            <bank_accept_date>2021-10-29 15:51:22+01</bank_accept_date>
             <bank_branch_name></bank_branch_name>
             <bank_branch_code></bank_branch_code>
-            <bank_accept_date>2010-05-11 10:28:35.435216</bank_accept_date>
             <bank_branch_accept_date></bank_branch_accept_date>
-
-            <benef_id>1234124</benef_id>
+            <delivery_date>2021-10-29 01:00:00+01</delivery_date>
+            <processed_date></processed_date>
+            <processed_by></processed_by>
+            <trans_type>Account</trans_type>
+            <benef_id>44911</benef_id>
+            <benef_name>
+                <![CDATA[JOHN WAROSSA DOE]]>
+            </benef_name>
             <benef_firstname>
-                <![CDATA[ZIAD]]>
+                <![CDATA[JOHN]]>
             </benef_firstname>
             <benef_middlename>
-                <![CDATA[HASSAN]]>
+                <![CDATA[WAROSSA]]>
             </benef_middlename>
             <benef_lastname>
-                <![CDATA[SYFULLAH]]>
+                <![CDATA[DOE]]>
             </benef_lastname>
             <remitt_benef_relation>
-                <![CDATA[]]>
+                <![CDATA[FAMILY]]>
             </remitt_benef_relation>
-            <benef_mobile>
+            <benef_tel>
                 <![CDATA[]]>
+            </benef_tel>
+            <benef_mobile>
+                <![CDATA[+32323232]]>
             </benef_mobile>
             <benef_email>
-                <![CDATA[]]>
+                <![CDATA[benef@example.com]]>
             </benef_email>
             <benef_nationality>
-                <![CDATA[]]>
+                <![CDATA[UA]]>
             </benef_nationality>
             <collection_point>
-                <![CDATA[BOGRA]]>
+                <![CDATA[]]>
             </collection_point>
+            <collection_point_bank>
+                <![CDATA[]]>
+            </collection_point_bank>
             <collection_point_code>
                 <![CDATA[]]>
             </collection_point_code>
@@ -55,43 +63,78 @@
                 <![CDATA[NONE]]>
             </benef_id_type>
             <benef_id_detail>
-                <![CDATA[]]>
+                <![CDATA[NO1245]]>
             </benef_id_detail>
             <benef_ac>
-                <![CDATA[1234567890]]>
+                <![CDATA[123412341234]]>
             </benef_ac>
             <benef_ac_type>
-                <![CDATA[]]>
+                <![CDATA[actype]]>
             </benef_ac_type>
-            <benef_bank>
-                <![CDATA[PRIME BANK LIMITED]]>
-            </benef_bank>
             <benef_bank_swift_code>
-                <![CDATA[ABC123]]>
+                <![CDATA[SWIFT556]]>
             </benef_bank_swift_code>
-            <benef_bank_iban></benef_bank_iban>
+            <benef_bank_iban>
+                <![CDATA[IBAN887]]>
+            </benef_bank_iban>
             <benef_bank_bsb_code>
-                <![CDATA[ABC123]]>
+                <![CDATA[]]>
             </benef_bank_bsb_code>
             <benef_bank_routing_transit_number>
-                <![CDATA[ABC123]]>
+                <![CDATA[]]>
             </benef_bank_routing_transit_number>
             <benef_bank_ifsc_code></benef_bank_ifsc_code>
-            <benef_bank_account_name>
-                <![CDATA[ABC123]]>
-            </benef_bank_account_name>
-            <benef_branch>
-                <![CDATA[AGRABAD]]>
-            </benef_branch>
-            <benef_branch_code>
-                <![CDATA[1234]]>
-            </benef_branch_code>
+            <benef_bank>
+                <![CDATA[NIGERIA PROCESSING BANK]]>
+            </benef_bank>
             <benef_bank_city>
-                <![CDATA[CHITTAGONG]]>
+                <![CDATA[LAGOS]]>
             </benef_bank_city>
             <benef_bank_state>
-                <![CDATA[CHITTAGONG]]>
+                <![CDATA[N/A]]>
             </benef_bank_state>
+            <benef_bank_account_name>
+                <![CDATA[]]>
+            </benef_bank_account_name>
+            <benef_branch>
+                <![CDATA[UNITED BANK FOR AFRICA]]>
+            </benef_branch>
+            <benef_branch_code>
+                <![CDATA[033]]>
+            </benef_branch_code>
+            <benef_branch_telephone>
+                <![CDATA[]]>
+            </benef_branch_telephone>
+            <benef_branch_manager>
+                <![CDATA[]]>
+            </benef_branch_manager>
+            <additional_benef_bank>
+                <![CDATA[]]>
+            </additional_benef_bank>
+            <additional_benef_bank_branch>
+                <![CDATA[]]>
+            </additional_benef_bank_branch>
+            <benef_bank_third_party_id>
+                <![CDATA[]]>
+            </benef_bank_third_party_id>
+            <benef_bank_third_party_name>
+                <![CDATA[]]>
+            </benef_bank_third_party_name>
+            <benef_bank_third_party_code>
+                <![CDATA[]]>
+            </benef_bank_third_party_code>
+            <benef_branch_third_party_id>
+                <![CDATA[]]>
+            </benef_branch_third_party_id>
+            <benef_branch_third_party_name>
+                <![CDATA[]]>
+            </benef_branch_third_party_name>
+            <benef_branch_third_party_code>
+                <![CDATA[]]>
+            </benef_branch_third_party_code>
+            <benef_card_type>
+                <![CDATA[]]>
+            </benef_card_type>
             <benef_card_number>
                 <![CDATA[]]>
             </benef_card_number>
@@ -105,19 +148,19 @@
                 <![CDATA[a3]]>
             </benef_address3>
             <benef_city>
-                <![CDATA[BOGRA]]>
+                <![CDATA[LAGOS]]>
             </benef_city>
             <benef_state>
                 <![CDATA[]]>
             </benef_state>
             <benef_postcode>
-            <![CDATA[]]>
+                <![CDATA[BEN 445]]>
             </benef_postcode>
             <benef_mobiletransfer_number>
-                <![CDATA[01234567]]>
+                <![CDATA[+12341234]]>
             </benef_mobiletransfer_number>
             <benef_mobiletransfer_network>
-                <![CDATA[mobileNetwork]]>
+                <![CDATA[nortstar]]>
             </benef_mobiletransfer_network>
             <benef_mobiletransfer_network_credit_type>
                 <![CDATA[]]>
@@ -128,29 +171,67 @@
             <delivery_notes>
                 <![CDATA[]]>
             </delivery_notes>
-            <utility_company><![CDATA[]]></utility_company>
-            <utility_account_no><![CDATA[]]></utility_account_no>
-            <utility_invoice><![CDATA[]]></utility_invoice>
-            <utility_bank><![CDATA[]]></utility_bank>
-            <utility_bank_code><![CDATA[]]></utility_bank_code>
-            <utility_description><![CDATA[]]></utility_description>
-
+            <utility_company>
+                <![CDATA[]]>
+            </utility_company>
+            <utility_company_code>
+                <![CDATA[]]>
+            </utility_company_code>
+            <utility_company_address1>
+                <![CDATA[]]>
+            </utility_company_address1>
+            <utility_company_address2>
+                <![CDATA[]]>
+            </utility_company_address2>
+            <utility_company_address3>
+                <![CDATA[]]>
+            </utility_company_address3>
+            <utility_company_city>
+                <![CDATA[]]>
+            </utility_company_city>
+            <utility_company_state>
+                <![CDATA[]]>
+            </utility_company_state>
+            <utility_company_postcode>
+                <![CDATA[]]>
+            </utility_company_postcode>
+            <utility_account_no>
+                <![CDATA[]]>
+            </utility_account_no>
+            <utility_invoice>
+                <![CDATA[]]>
+            </utility_invoice>
+            <utility_bank>
+                <![CDATA[]]>
+            </utility_bank>
+            <utility_bank_code>
+                <![CDATA[]]>
+            </utility_bank_code>
+            <utility_bank_bic>
+                <![CDATA[]]>
+            </utility_bank_bic>
+            <utility_description>
+                <![CDATA[]]>
+            </utility_description>
             <remitter_id>18270</remitter_id>
+            <remitter_name>
+                <![CDATA[JANE BAROSSA DOE]]>
+            </remitter_name>
             <remitter_firstname>
-                <![CDATA[JOHN]]>
+                <![CDATA[JANE]]>
             </remitter_firstname>
             <remitter_middlename>
-                <![CDATA[AVEC]]>
+                <![CDATA[BAROSSA]]>
             </remitter_middlename>
             <remitter_lastname>
                 <![CDATA[DOE]]>
             </remitter_lastname>
             <remitter_address>
-                <![CDATA[123, EXAMPLE HOUSE, PARK STREET, MANCHESTER, N/A, 1234 EEE, UNITED KINDGOM]]>
+                <![CDATA[1241243, SAM HOUSE, EXAMPLE STREET, MANCHESTER, N/A, 11234 DDD, UNITED KINDGOM]]>
             </remitter_address>
             <remitter_address_parts>
                 <remitter_building_no>
-                    <![CDATA[]]>
+                    <![CDATA[building 123]]>
                 </remitter_building_no>
                 <remitter_address1>
                     <![CDATA[ra1]]>
@@ -165,14 +246,14 @@
                     <![CDATA[N/A]]>
                 </remitter_state>
                 <remitter_postcode>
-                    <![CDATA[]]>
+                    <![CDATA[123 POST]]>
                 </remitter_postcode>
                 <remitter_country>
                     <![CDATA[GB]]>
                 </remitter_country>
             </remitter_address_parts>
             <remitter_type>
-                <![CDATA[]]>
+                <![CDATA[registered]]>
             </remitter_type>
             <remitter_orgtype>
                 <![CDATA[Individual]]>
@@ -196,7 +277,7 @@
                 <![CDATA[Driving_License]]>
             </remitter_id1_type>
             <remitter_id1_details>
-                <![CDATA[12341234]]>
+                <![CDATA[DRV12341234]]>
             </remitter_id1_details>
             <remitter_id1_issue_place>
                 <![CDATA[]]>
@@ -211,7 +292,7 @@
                 <![CDATA[NG]]>
             </remitter_nationality>
             <remitter_dob>
-                <![CDATA[1965-05-26]]>
+                <![CDATA[1999-12-15]]>
             </remitter_dob>
             <remitter_place_of_birth>
                 <![CDATA[]]>
@@ -228,31 +309,39 @@
             <remitter_occupation>
                 <![CDATA[SELF EMPLOYED]]>
             </remitter_occupation>
-
-            <send_country>SG</send_country>
-            <send_country_iso>SG</send_country_iso>
-            <send_currency>SGD</send_currency>
-            <send_amount>157.57</send_amount>
-            <rate>49.2800</rate>
-            <commission>5.00</commission>
+            <send_country>GB</send_country>
+            <send_country_iso>GB</send_country_iso>
+            <send_country_name></send_country_name>
+            <send_currency>GBP</send_currency>
+            <send_amount>36.50</send_amount>
+            <rate>1.37000000</rate>
+            <commission>2.50</commission>
             <fees>0</fees>
-            <paid>162.57</paid>
-            <receive_country>BD</receive_country>
-            <receive_country_iso>BD</receive_country_iso>
-            <receive_currency>BDT</receive_currency>
-            <receive_amount>7765.05</receive_amount>
-            <receive_amount_after_bank_charges>7765.05</receive_amount_after_bank_charges>
-            <bank_sequence>2929</bank_sequence>
+            <paid>39.00</paid>
+            <receive_country>NG</receive_country>
+            <receive_country_iso>NG</receive_country_iso>
+            <receive_country_name></receive_country_name>
+            <receive_currency>USD</receive_currency>
+            <receive_amount>50.00</receive_amount>
+            <receive_amount_creditlog_ccy>28394.16</receive_amount_creditlog_ccy>
+            <bank_charges_creditlog_ccy>0.00</bank_charges_creditlog_ccy>
+            <bank_charges_slabs_ccy>0.00</bank_charges_slabs_ccy>
+            <receive_amount_after_bank_charges>49.00</receive_amount_after_bank_charges>
+            <bank_sequence>26384</bank_sequence>
             <pay_method></pay_method>
             <issue_date></issue_date>
             <bank_ref></bank_ref>
-            <benef_trans_ref>GHT33762634</benef_trans_ref>
             <bank_comments></bank_comments>
             <bank_credit_date></bank_credit_date>
             <bank_clear_date></bank_clear_date>
+            <bank_charges_dest>0.00</bank_charges_dest>
             <deleted_reason></deleted_reason>
-            <admin_comments><![CDATA[]]></admin_comments>
-            <payout_comments><![CDATA[]]></payout_comments>
+            <admin_comments>
+                <![CDATA[]]>
+            </admin_comments>
+            <payout_comments>
+                <![CDATA[]]>
+            </payout_comments>
         </transaction>
     </result>
 </response>

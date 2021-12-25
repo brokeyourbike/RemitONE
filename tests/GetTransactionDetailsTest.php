@@ -84,13 +84,56 @@ class GetTransactionDetailsTest extends TestCase
 
         $transactionDecoded = $response->getResult()->getTransaction();
         $this->assertInstanceOf(Transaction::class, $transactionDecoded);
-        $this->assertSame('RA20079127', $transactionDecoded->getReference());
+        $this->assertSame('LOL13241234', $transactionDecoded->getReference());
         $this->assertSame('Account', $transactionDecoded->getType());
-        $this->assertSame('HQ_OK', $transactionDecoded->getStatus());
-        $this->assertSame('1965-05-26', $transactionDecoded->getRemitterDateOfBirth());
+        $this->assertSame('SENT_FOR_PAY', $transactionDecoded->getStatus());
+        $this->assertSame('GB', $transactionDecoded->getSendCountryIso());
+        $this->assertSame('GBP', $transactionDecoded->getSendCurrency());
+        $this->assertSame('36.50', $transactionDecoded->getSendAmount());
+        $this->assertSame('NG', $transactionDecoded->getReceiveCountryIso());
+        $this->assertSame('USD', $transactionDecoded->getReceiveCurrency());
+        $this->assertSame('50.00', $transactionDecoded->getReceiveAmount());
+        $this->assertSame('49.00', $transactionDecoded->getReceiveAmountAfterBankCharges());
+
+        $this->assertSame('18270', $transactionDecoded->getRemitterId());
+        $this->assertSame('Male', $transactionDecoded->getRemitterGender());
+        $this->assertSame('JANE', $transactionDecoded->getRemitterFirstName());
+        $this->assertSame('BAROSSA', $transactionDecoded->getRemitterMiddleName());
+        $this->assertSame('DOE', $transactionDecoded->getRemitterLastName());
+        $this->assertSame('NG', $transactionDecoded->getRemitterNationality());
+        $this->assertSame('1999-12-15', $transactionDecoded->getRemitterDateOfBirth());
         $this->assertSame('+441234123412', $transactionDecoded->getRemitterMobileNumber());
+        $this->assertSame('Driving_License', $transactionDecoded->getRemitterIdentificationType());
+        $this->assertSame('DRV12341234', $transactionDecoded->getRemitterIdentificationDetails());
+        $this->assertSame('2026-11-29', $transactionDecoded->getRemitterIdentificationExpiry());
 
         $this->assertInstanceOf(AddressParts::class, $transactionDecoded->getRemitterAddressParts());
+        $this->assertSame('building 123', $transactionDecoded->getRemitterAddressParts()->getBuildingNumber());
         $this->assertSame('ra1 ra2', $transactionDecoded->getRemitterAddressParts()->getAddress());
+        $this->assertSame('MANCHESTER', $transactionDecoded->getRemitterAddressParts()->getCity());
+        $this->assertSame('N/A', $transactionDecoded->getRemitterAddressParts()->getState());
+        $this->assertSame('123 POST', $transactionDecoded->getRemitterAddressParts()->getPostcode());
+        $this->assertSame('GB', $transactionDecoded->getRemitterAddressParts()->getCountry());
+
+        $this->assertSame('44911', $transactionDecoded->getBeneficiaryId());
+        $this->assertSame('JOHN', $transactionDecoded->getBeneficiaryFirstName());
+        $this->assertSame('DOE', $transactionDecoded->getBeneficiaryLastName());
+        $this->assertSame('WAROSSA', $transactionDecoded->getBeneficiaryMiddleName());
+        $this->assertSame('NONE', $transactionDecoded->getBeneficiaryIdType());
+        $this->assertSame('NO1245', $transactionDecoded->getBeneficiaryIdDetails());
+        $this->assertSame('BEN 445', $transactionDecoded->getBeneficiaryPostcode());
+        $this->assertSame('+12341234', $transactionDecoded->getBeneficiaryMobileTransferNumber());
+        $this->assertSame('nortstar', $transactionDecoded->getBeneficiaryMobileTransferNetwork());
+        $this->assertSame('a1 a2 a3', $transactionDecoded->getBeneficiaryAddress());
+        $this->assertSame('LAGOS', $transactionDecoded->getBeneficiaryCity());
+        $this->assertSame('+32323232', $transactionDecoded->getBeneficiaryMobileNumber());
+        $this->assertSame('benef@example.com', $transactionDecoded->getBeneficiaryEmail());
+        $this->assertSame('UA', $transactionDecoded->getBeneficiaryNationality());
+        $this->assertSame('UNITED BANK FOR AFRICA', $transactionDecoded->getBeneficiaryBranch());
+        $this->assertSame('033', $transactionDecoded->getBeneficiaryBranchCode());
+        $this->assertSame('123412341234', $transactionDecoded->getBeneficiaryBankAccountNumber());
+        $this->assertSame('actype', $transactionDecoded->getBeneficiaryBankAccountType());
+        $this->assertSame('SWIFT556', $transactionDecoded->getBeneficiaryBankSwiftCode());
+        $this->assertSame('IBAN887', $transactionDecoded->getBeneficiaryBankIban());
     }
 }
