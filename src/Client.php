@@ -20,6 +20,7 @@ use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
 use Psr\Http\Message\ResponseInterface;
 use GuzzleHttp\ClientInterface;
 use BrokeYourBike\ResolveUri\ResolveUriTrait;
+use BrokeYourBike\RemitOne\Models\UpdateTransactionResponse;
 use BrokeYourBike\RemitOne\Models\TransactionsResponse;
 use BrokeYourBike\RemitOne\Models\TransactionStatusResponse;
 use BrokeYourBike\RemitOne\Models\TransactionDetailsResponse;
@@ -172,17 +173,18 @@ class Client implements HttpClientInterface
         return $this->deserialize($response, ErrorTransactionResponse::class);
     }
 
-    public function updateTransactionCollectionPin(TransactionInterface $transaction, string $collectionPin): ResponseInterface
+    public function updateTransactionCollectionPin(TransactionInterface $transaction, string $collectionPin): UpdateTransactionResponse
     {
         if ($transaction instanceof SourceModelInterface) {
             $this->setSourceModel($transaction);
         }
 
-        return $this->performRequest(HttpMethodEnum::POST, 'transaction/updatePayoutTransDetails', [
+        $response = $this->performRequest(HttpMethodEnum::POST, 'transaction/updatePayoutTransDetails', [
             'trans_ref' => $transaction->getReference(),
             'benef_trans_ref' => $transaction->getReference(),
             'collection_pin' => $collectionPin,
         ]);
+        return $this->deserialize($response, UpdateTransactionResponse::class);
     }
 
     /**
