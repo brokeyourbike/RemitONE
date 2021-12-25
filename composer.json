@@ -7,7 +7,9 @@
         "api",
         "api-client",
         "r1",
-        "remit-one"
+        "remitone",
+        "remit-one",
+        "money-transfer"
     ],
     "autoload": {
         "psr-4": {
@@ -39,6 +41,7 @@
     "require-dev": {
         "bamarni/composer-bin-plugin": "^1.4",
         "phpunit/phpunit": "^9",
-        "mockery/mockery": "^1.4"
+        "mockery/mockery": "^1.4",
+        "nesbot/carbon": "^2.55"
     }
 }

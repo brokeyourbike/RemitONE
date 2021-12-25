@@ -67,13 +67,13 @@ class Client implements HttpClientInterface
     public function getTransactions(): TransactionsResponse
     {
         $response = $this->performRequest(HttpMethodEnum::POST, 'transaction/getPayoutTransactions', []);
-        return $this->serializer->deserialize($response->getBody(), TransactionsResponse::class, 'xml');
+        return $this->deserialize($response, TransactionsResponse::class);
     }
 
     public function getPendingTransactions(): TransactionsResponse
     {
         $response = $this->performRequest(HttpMethodEnum::POST, 'transaction/getPendingPayoutTransactions', []);
-        return $this->serializer->deserialize($response->getBody(), TransactionsResponse::class, 'xml');
+        return $this->deserialize($response, TransactionsResponse::class);
     }
 
     public function getErrorTransactions(\DateTime $start, \DateTime $end): TransactionsResponse
@@ -82,7 +82,7 @@ class Client implements HttpClientInterface
             'from_date' => $start->format('Y-m-d'),
             'to_date' => $end->format('Y-m-d'),
         ]);
-        return $this->serializer->deserialize($response->getBody(), TransactionsResponse::class, 'xml');
+        return $this->deserialize($response, TransactionsResponse::class);
     }
 
     public function getTransactionDetails(TransactionInterface $transaction): TransactionDetailsResponse
@@ -94,7 +94,7 @@ class Client implements HttpClientInterface
         $response = $this->performRequest(HttpMethodEnum::POST, 'transaction/getPayoutTransactionDetails', [
             'trans_ref' => $transaction->getReference(),
         ]);
-        return $this->serializer->deserialize($response->getBody(), TransactionDetailsResponse::class, 'xml');
+        return $this->deserialize($response, TransactionDetailsResponse::class);
     }
 
     public function getTransactionStatus(TransactionInterface $transaction): TransactionStatusResponse
@@ -106,7 +106,7 @@ class Client implements HttpClientInterface
         $response = $this->performRequest(HttpMethodEnum::POST, 'transaction/getTransactionStatus', [
             'trans_ref' => $transaction->getReference(),
         ]);
-        return $this->serializer->deserialize($response->getBody(), TransactionStatusResponse::class, 'xml');
+        return $this->deserialize($response, TransactionStatusResponse::class);
     }
 
     public function acceptTransaction(TransactionInterface $transaction): AcceptTransactionResponse
@@ -115,20 +115,16 @@ class Client implements HttpClientInterface
             $this->setSourceModel($transaction);
         }
 
-        if ($this->user->getType() === UserTypeEnum::BANK_SUPER && !$transaction->getBankName()) {
-            // throw
-        }
-
         $data = [
             'trans_ref' => $transaction->getReference(),
         ];
 
-        if ($transaction->getBankName()) {
+        if ($this->user->getType() === UserTypeEnum::BANK_SUPER && $transaction->getBankName()) {
             $data['bank_name'] = $transaction->getBankName();
         }
 
         $response = $this->performRequest(HttpMethodEnum::POST, 'transaction/acceptPayoutTransactions', $data);
-        return $this->serializer->deserialize($response->getBody(), AcceptTransactionResponse::class, 'xml');
+        return $this->deserialize($response, AcceptTransactionResponse::class);
     }
 
     public function processTransaction(TransactionInterface $transaction, string $payMethod): ProcessTransactionResponse
@@ -137,21 +133,17 @@ class Client implements HttpClientInterface
             $this->setSourceModel($transaction);
         }
 
-        if ($this->user->getType() === UserTypeEnum::BANK_SUPER && !$transaction->getBankName()) {
-            // throw
-        }
-
         $data = [
             'trans_ref' => $transaction->getReference(),
             'pay_method' => $payMethod,
         ];
 
-        if ($transaction->getBankName()) {
+        if ($this->user->getType() === UserTypeEnum::BANK_SUPER && $transaction->getBankName()) {
             $data['bank_name'] = $transaction->getBankName();
         }
 
         $response = $this->performRequest(HttpMethodEnum::POST, 'transaction/processPayoutTransaction', $data);
-        return $this->serializer->deserialize($response->getBody(), ProcessTransactionResponse::class, 'xml');
+        return $this->deserialize($response, ProcessTransactionResponse::class);
     }
 
     public function errorTransaction(
@@ -163,10 +155,6 @@ class Client implements HttpClientInterface
             $this->setSourceModel($transaction);
         }
 
-        if ($this->user->getType() === UserTypeEnum::BANK_SUPER && !$transaction->getBankName()) {
-            // throw
-        }
-
         $data = [
             'trans_ref' => $transaction->getReference(),
             'error_reason' => $errorReason,
@@ -176,12 +164,12 @@ class Client implements HttpClientInterface
             $data['error_details'] = $errorDetails;
         }
 
-        if ($transaction->getBankName()) {
+        if ($this->user->getType() === UserTypeEnum::BANK_SUPER && $transaction->getBankName()) {
             $data['bank_name'] = $transaction->getBankName();
         }
 
         $response = $this->performRequest(HttpMethodEnum::POST, 'transaction/errorPayoutTransaction', $data);
-        return $this->serializer->deserialize($response->getBody(), ErrorTransactionResponse::class, 'xml');
+        return $this->deserialize($response, ErrorTransactionResponse::class);
     }
 
     public function updateTransactionCollectionPin(TransactionInterface $transaction, string $collectionPin): ResponseInterface
@@ -233,5 +221,10 @@ class Client implements HttpClientInterface
             new DateTimeNormalizer(),
             new ObjectNormalizer(propertyTypeExtractor: $extractor),
         ], [new XmlEncoder()]);
+    }
+
+    private function deserialize(ResponseInterface $response, string $target): mixed
+    {
+        return $this->serializer->deserialize($response->getBody(), $target, 'xml');
     }
 }
