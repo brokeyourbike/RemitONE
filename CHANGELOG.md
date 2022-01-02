@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.1.1](https://www.github.com/brokeyourbike/remit-one-api-client-php/compare/v0.1.0...v0.1.1) (2022-01-02)
+
+
+### Bug Fixes
+
+* add baseline for mehods ([950d2fc](https://www.github.com/brokeyourbike/remit-one-api-client-php/commit/950d2fc50a3d5d60fb5d66944f15a60e1309e48e))
+
 ## 0.1.0 (2021-12-25)
 
 
