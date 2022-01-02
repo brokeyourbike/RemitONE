@@ -1,0 +1,47 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Method BrokeYourBike\\\\RemitOne\\\\Client\\:\\:acceptTransaction\\(\\) should return BrokeYourBike\\\\RemitOne\\\\Models\\\\AcceptTransactionResponse but returns mixed\\.$#"
+			count: 1
+			path: src/Client.php
+
+		-
+			message: "#^Method BrokeYourBike\\\\RemitOne\\\\Client\\:\\:errorTransaction\\(\\) should return BrokeYourBike\\\\RemitOne\\\\Models\\\\ErrorTransactionResponse but returns mixed\\.$#"
+			count: 1
+			path: src/Client.php
+
+		-
+			message: "#^Method BrokeYourBike\\\\RemitOne\\\\Client\\:\\:getErrorTransactions\\(\\) should return BrokeYourBike\\\\RemitOne\\\\Models\\\\TransactionsResponse but returns mixed\\.$#"
+			count: 1
+			path: src/Client.php
+
+		-
+			message: "#^Method BrokeYourBike\\\\RemitOne\\\\Client\\:\\:getPendingTransactions\\(\\) should return BrokeYourBike\\\\RemitOne\\\\Models\\\\TransactionsResponse but returns mixed\\.$#"
+			count: 1
+			path: src/Client.php
+
+		-
+			message: "#^Method BrokeYourBike\\\\RemitOne\\\\Client\\:\\:getTransactionDetails\\(\\) should return BrokeYourBike\\\\RemitOne\\\\Models\\\\TransactionDetailsResponse but returns mixed\\.$#"
+			count: 1
+			path: src/Client.php
+
+		-
+			message: "#^Method BrokeYourBike\\\\RemitOne\\\\Client\\:\\:getTransactionStatus\\(\\) should return BrokeYourBike\\\\RemitOne\\\\Models\\\\TransactionStatusResponse but returns mixed\\.$#"
+			count: 1
+			path: src/Client.php
+
+		-
+			message: "#^Method BrokeYourBike\\\\RemitOne\\\\Client\\:\\:getTransactions\\(\\) should return BrokeYourBike\\\\RemitOne\\\\Models\\\\TransactionsResponse but returns mixed\\.$#"
+			count: 1
+			path: src/Client.php
+
+		-
+			message: "#^Method BrokeYourBike\\\\RemitOne\\\\Client\\:\\:processTransaction\\(\\) should return BrokeYourBike\\\\RemitOne\\\\Models\\\\ProcessTransactionResponse but returns mixed\\.$#"
+			count: 1
+			path: src/Client.php
+
+		-
+			message: "#^Method BrokeYourBike\\\\RemitOne\\\\Client\\:\\:updateTransactionCollectionPin\\(\\) should return BrokeYourBike\\\\RemitOne\\\\Models\\\\UpdateTransactionResponse but returns mixed\\.$#"
+			count: 1
+			path: src/Client.php
+
