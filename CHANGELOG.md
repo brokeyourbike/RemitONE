@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://www.github.com/brokeyourbike/remit-one-api-client-php/compare/v0.1.1...v0.2.0) (2022-01-04)
+
+
+### Features
+
+* add interfaces for Transaction and AddressParts ([a662999](https://www.github.com/brokeyourbike/remit-one-api-client-php/commit/a662999dfbee38766fee30b590bc4d7973462eda))
+
 ### [0.1.1](https://www.github.com/brokeyourbike/remit-one-api-client-php/compare/v0.1.0...v0.1.1) (2022-01-02)
 
 
