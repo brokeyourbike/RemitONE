@@ -8,10 +8,12 @@
 
 namespace BrokeYourBike\RemitOne\Models;
 
+use BrokeYourBike\RemitOne\Interfaces\DecodedAddressPartsInterface;
+
 /**
  * @author Ivan Stasiuk <ivan@stasi.uk>
  */
-class AddressParts
+class AddressParts implements DecodedAddressPartsInterface
 {
     public function __construct(
         private string $remitter_building_no,

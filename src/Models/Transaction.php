@@ -8,10 +8,12 @@
 
 namespace BrokeYourBike\RemitOne\Models;
 
+use BrokeYourBike\RemitOne\Interfaces\DecodedTransactionInterface;
+
 /**
  * @author Ivan Stasiuk <ivan@stasi.uk>
  */
-class Transaction
+class Transaction implements DecodedTransactionInterface
 {
     public function __construct(
         private string $trans_ref,
