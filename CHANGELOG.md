@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.3.1](https://www.github.com/brokeyourbike/remit-one-api-client-php/compare/v0.3.0...v0.3.1) (2022-01-07)
+
+
+### Bug Fixes
+
+* add more properties ([e430b56](https://www.github.com/brokeyourbike/remit-one-api-client-php/commit/e430b56b629514d0cb094b212b942b30d867e9df))
+
 ## [0.3.0](https://www.github.com/brokeyourbike/remit-one-api-client-php/compare/v0.2.0...v0.3.0) (2022-01-07)
 
 
