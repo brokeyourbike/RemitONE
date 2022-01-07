@@ -37,8 +37,9 @@ interface DecodedTransactionInterface
     public function getBeneficiaryIdType(): string;
     public function getBeneficiaryIdDetails(): string;
     public function getBeneficiaryPostcode(): string;
-    public function getBeneficiaryMobileTransferNumber(): string;
-    public function getBeneficiaryMobileTransferNetwork(): string;
+    public function getBeneficiaryMobileTransferNumber(): ?string;
+    public function getBeneficiaryMobileTransferNetwork(): ?string;
+    public function getBeneficiaryMobileTransferNetworkThirdPartyId(): ?string;
     public function getBeneficiaryAddress(): string;
     public function getBeneficiaryCity(): string;
     public function getBeneficiaryMobileNumber(): string;
@@ -50,6 +51,12 @@ interface DecodedTransactionInterface
     public function getBeneficiaryBankAccountType(): string;
     public function getBeneficiaryBankSwiftCode(): string;
     public function getBeneficiaryBankIban(): string;
+    public function getBeneficiaryBankThirdPartyId(): ?string;
+    public function getBeneficiaryBankThirdPartyName(): ?string;
+    public function getBeneficiaryBankThirdPartyCode(): ?string;
+    public function getBeneficiaryBranchThirdPartyId(): ?string;
+    public function getBeneficiaryBranchThirdPartyName(): ?string;
+    public function getBeneficiaryBranchThirdPartyCode(): ?string;
     public function getSendCountryIso(): string;
     public function getSendCurrency(): string;
     public function getSendAmount(): string;

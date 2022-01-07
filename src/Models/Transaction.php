@@ -40,8 +40,15 @@ class Transaction implements DecodedTransactionInterface
         private string $benef_address3,
         private string $benef_city,
         private string $benef_postcode,
-        private string $benef_mobiletransfer_number,
-        private string $benef_mobiletransfer_network,
+        private ?string $benef_mobiletransfer_number,
+        private ?string $benef_mobiletransfer_network,
+        private ?string $benef_mobiletransfer_network_third_party_id,
+        private ?string $benef_bank_third_party_id,
+        private ?string $benef_bank_third_party_name,
+        private ?string $benef_bank_third_party_code,
+        private ?string $benef_branch_third_party_id,
+        private ?string $benef_branch_third_party_name,
+        private ?string $benef_branch_third_party_code,
 
         private string $remitter_id,
         private string $remitter_firstname,
@@ -176,14 +183,19 @@ class Transaction implements DecodedTransactionInterface
         return $this->benef_postcode;
     }
 
-    public function getBeneficiaryMobileTransferNumber(): string
+    public function getBeneficiaryMobileTransferNumber(): ?string
     {
         return $this->benef_mobiletransfer_number;
     }
 
-    public function getBeneficiaryMobileTransferNetwork(): string
+    public function getBeneficiaryMobileTransferNetwork(): ?string
     {
         return $this->benef_mobiletransfer_network;
+    }
+
+    public function getBeneficiaryMobileTransferNetworkThirdPartyId(): ?string
+    {
+        return $this->benef_mobiletransfer_network_third_party_id;
     }
 
     public function getBeneficiaryAddress(): string
@@ -239,6 +251,36 @@ class Transaction implements DecodedTransactionInterface
     public function getBeneficiaryBankIban(): string
     {
         return $this->benef_bank_iban;
+    }
+
+    public function getBeneficiaryBankThirdPartyId(): ?string
+    {
+        return $this->benef_bank_third_party_id;
+    }
+
+    public function getBeneficiaryBankThirdPartyName(): ?string
+    {
+        return $this->benef_bank_third_party_name;
+    }
+
+    public function getBeneficiaryBankThirdPartyCode(): ?string
+    {
+        return $this->benef_bank_third_party_code;
+    }
+
+    public function getBeneficiaryBranchThirdPartyId(): ?string
+    {
+        return $this->benef_branch_third_party_id;
+    }
+
+    public function getBeneficiaryBranchThirdPartyName(): ?string
+    {
+        return $this->benef_branch_third_party_name;
+    }
+
+    public function getBeneficiaryBranchThirdPartyCode(): ?string
+    {
+        return $this->benef_branch_third_party_code;
     }
 
     public function getSendCountryIso(): string
