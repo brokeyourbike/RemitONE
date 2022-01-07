@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.3.0](https://www.github.com/brokeyourbike/remit-one-api-client-php/compare/v0.2.0...v0.3.0) (2022-01-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* ErrorTransaction, handle empty lists
+
+### Bug Fixes
+
+* ErrorTransaction, handle empty lists ([21e2f73](https://www.github.com/brokeyourbike/remit-one-api-client-php/commit/21e2f7364702a8884a6dfda54278e2d7b0cfaadf))
+
 ## [0.2.0](https://www.github.com/brokeyourbike/remit-one-api-client-php/compare/v0.1.1...v0.2.0) (2022-01-04)
 
 
