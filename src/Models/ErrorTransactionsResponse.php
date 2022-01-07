@@ -11,24 +11,21 @@ namespace BrokeYourBike\RemitOne\Models;
 /**
  * @author Ivan Stasiuk <ivan@stasi.uk>
  */
-class TransactionsResult
+class ErrorTransactionsResponse
 {
     public function __construct(
-        private int $count,
-        private ?TransactionsWrapper $transactions,
+        private string $status,
+        private ErrorTransactionsResult $result,
     ) {
     }
 
-    public function getCount(): int
+    public function getStatus(): string
     {
-        return $this->count;
+        return $this->status;
     }
 
-    /**
-     * @return Transaction[]
-     */
-    public function getTransactionsList(): array
+    public function getResult(): ErrorTransactionsResult
     {
-        return $this->transactions ? $this->transactions->getTransaction() : [];
+        return $this->result;
     }
 }

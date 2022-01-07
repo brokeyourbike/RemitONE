@@ -11,7 +11,7 @@ parameters:
 			path: src/Client.php
 
 		-
-			message: "#^Method BrokeYourBike\\\\RemitOne\\\\Client\\:\\:getErrorTransactions\\(\\) should return BrokeYourBike\\\\RemitOne\\\\Models\\\\TransactionsResponse but returns mixed\\.$#"
+			message: "#^Method BrokeYourBike\\\\RemitOne\\\\Client\\:\\:getErrorTransactions\\(\\) should return BrokeYourBike\\\\RemitOne\\\\Models\\\\ErrorTransactionsResponse but returns mixed\\.$#"
 			count: 1
 			path: src/Client.php
 

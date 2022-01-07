@@ -22,21 +22,15 @@ use BrokeYourBike\RemitOne\Client;
  */
 class GetTransactionsTest extends TestCase
 {
-    private readonly string $xml;
-
     private string $username = 'john';
     private string $password = 'john1234';
     private string $pin = '456';
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->xml = file_get_contents(dirname(__FILE__) . '/Data/transactions.xml');
-    }
-
     /** @test */
     public function it_can_prepare_request(): void
     {
+        $xml = file_get_contents(dirname(__FILE__) . '/Data/transactions.xml');
+
         $mockedUser = $this->getMockBuilder(UserInterface::class)->getMock();
         $mockedUser->method('getUrl')->willReturn('https://api.example/');
         $mockedUser->method('getType')->willReturn(UserTypeEnum::BANK);
@@ -46,7 +40,7 @@ class GetTransactionsTest extends TestCase
 
         $mockedResponse = $this->getMockBuilder(ResponseInterface::class)->getMock();
         $mockedResponse->method('getStatusCode')->willReturn(200);
-        $mockedResponse->method('getBody')->willReturn($this->xml);
+        $mockedResponse->method('getBody')->willReturn($xml);
 
         /** @var \Mockery\MockInterface $mockedClient */
         $mockedClient = \Mockery::mock(\GuzzleHttp\Client::class);
@@ -80,5 +74,49 @@ class GetTransactionsTest extends TestCase
         $this->assertInstanceOf(AddressParts::class, $transactionDecoded->getRemitterAddressParts());
         $this->assertSame('ra1 ra2', $transactionDecoded->getRemitterAddressParts()->getAddress());
         $this->assertSame('a1 a2 a3', $transactionDecoded->getBeneficiaryAddress());
+    }
+
+    /** @test */
+    public function it_can_decode_empty_transactions()
+    {
+        $xml = file_get_contents(dirname(__FILE__) . '/Data/empty_transactions.xml');
+
+        $mockedUser = $this->getMockBuilder(UserInterface::class)->getMock();
+        $mockedUser->method('getUrl')->willReturn('https://api.example/');
+        $mockedUser->method('getType')->willReturn(UserTypeEnum::BANK);
+        $mockedUser->method('getUsername')->willReturn($this->username);
+        $mockedUser->method('getPassword')->willReturn($this->password);
+        $mockedUser->method('getPin')->willReturn($this->pin);
+
+        $mockedResponse = $this->getMockBuilder(ResponseInterface::class)->getMock();
+        $mockedResponse->method('getStatusCode')->willReturn(200);
+        $mockedResponse->method('getBody')->willReturn($xml);
+
+        /** @var \Mockery\MockInterface $mockedClient */
+        $mockedClient = \Mockery::mock(\GuzzleHttp\Client::class);
+        $mockedClient->shouldReceive('request')->withArgs([
+            'POST',
+            'https://api.example/transaction/getPayoutTransactions',
+            [
+                \GuzzleHttp\RequestOptions::FORM_PARAMS => [
+                    'username' => $this->username,
+                    'password' => $this->password,
+                    'pin' => $this->pin,
+                ],
+            ],
+        ])->once()->andReturn($mockedResponse);
+
+        /**
+         * @var UserInterface $mockedUser
+         * @var \GuzzleHttp\Client $mockedClient
+         * */
+        $api = new Client($mockedUser, $mockedClient);
+
+        $response = $api->getTransactions();
+
+        $this->assertInstanceOf(TransactionsResponse::class, $response);
+        $this->assertSame(StatusCodeEnum::SUCCESS->value, $response->getStatus());
+        $this->assertSame(0, $response->getResult()->getCount());
+        $this->assertCount(0, $response->getResult()->getTransactionsList());
     }
 }

@@ -11,8 +11,10 @@ namespace BrokeYourBike\RemitOne;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\PropertyInfo\PropertyInfoExtractor;
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
@@ -25,6 +27,7 @@ use BrokeYourBike\RemitOne\Models\TransactionsResponse;
 use BrokeYourBike\RemitOne\Models\TransactionStatusResponse;
 use BrokeYourBike\RemitOne\Models\TransactionDetailsResponse;
 use BrokeYourBike\RemitOne\Models\ProcessTransactionResponse;
+use BrokeYourBike\RemitOne\Models\ErrorTransactionsResponse;
 use BrokeYourBike\RemitOne\Models\ErrorTransactionResponse;
 use BrokeYourBike\RemitOne\Models\AcceptTransactionResponse;
 use BrokeYourBike\RemitOne\Interfaces\UserInterface;
@@ -77,13 +80,13 @@ class Client implements HttpClientInterface
         return $this->deserialize($response, TransactionsResponse::class);
     }
 
-    public function getErrorTransactions(\DateTime $start, \DateTime $end): TransactionsResponse
+    public function getErrorTransactions(\DateTime $start, \DateTime $end): ErrorTransactionsResponse
     {
         $response = $this->performRequest(HttpMethodEnum::POST, 'transaction/getErrorTransactions', [
             'from_date' => $start->format('Y-m-d'),
             'to_date' => $end->format('Y-m-d'),
         ]);
-        return $this->deserialize($response, TransactionsResponse::class);
+        return $this->deserialize($response, ErrorTransactionsResponse::class);
     }
 
     public function getTransactionDetails(TransactionInterface $transaction): TransactionDetailsResponse
@@ -221,7 +224,7 @@ class Client implements HttpClientInterface
         return new Serializer([
             new ArrayDenormalizer(),
             new DateTimeNormalizer(),
-            new ObjectNormalizer(propertyTypeExtractor: $extractor),
+            new Normalizer(propertyTypeExtractor: $extractor),
         ], [new XmlEncoder()]);
     }
 

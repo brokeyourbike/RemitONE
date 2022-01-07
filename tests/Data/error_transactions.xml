@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+    <responseId>326</responseId>
+    <status>SUCCESS</status>
+    <result>
+        <count>1</count>
+        <transactions>
+            <transaction>
+                <trans_ref>CC123456789</trans_ref>
+                <agent_trans_ref />
+                <trans_type>CASH_COLLECTION</trans_type>
+                <status>ERROR</status>
+                <error_date>2016-02-26</error_date>
+                <error_reason>Invalid Beneficiary ID</error_reason>
+                <previous_status_before_error>SENT_FOR_PAY</previous_status_before_error>
+                <error_user_id>1</error_user_id>
+                <error_username>admin</error_username>
+                <error_agent_code>123</error_agent_code>
+                <error_agent_name>Admin</error_agent_name>
+                <remitter_id>10000</remitter_id>
+                <remitter_name>John Doe</remitter_name>
+                <beneficiary_id>1</beneficiary_id>
+                <beneficiary_name>Jane Doe</beneficiary_name>
+                <destination_country>China</destination_country>
+                <originating_country>France</originating_country>
+                <source_currency>EUR</source_currency>
+                <source_transfer_amount>42</source_transfer_amount>
+                <rate>13.37</rate>
+                <destination_currency>CNY</destination_currency>
+                <destination_amount>561.54</destination_amount>
+                <delivery_date />
+                <admin_comments />
+                <payout_comments />
+            </transaction>
+        </transactions>
+    </result>
+</response>

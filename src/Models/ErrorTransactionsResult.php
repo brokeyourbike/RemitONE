@@ -11,33 +11,21 @@ namespace BrokeYourBike\RemitOne\Models;
 /**
  * @author Ivan Stasiuk <ivan@stasi.uk>
  */
-class AcceptTransactionResult
+class ErrorTransactionsResult
 {
     public function __construct(
-        private int $total_count,
-        private int $success_count,
-        private int $failed_count,
-        private ?AcceptTransactionsWrapper $transactions,
+        private int $count,
+        private ?ErrorTransactionsWrapper $transactions,
     ) {
     }
 
-    public function getTotalCount(): int
+    public function getCount(): int
     {
-        return $this->total_count;
-    }
-
-    public function getSuccessCount(): int
-    {
-        return $this->success_count;
-    }
-
-    public function getFailedCount(): int
-    {
-        return $this->failed_count;
+        return $this->count;
     }
 
     /**
-     * @return AcceptTransaction[]
+     * @return ErrorTransaction[]
      */
     public function getTransactionsList(): array
     {
