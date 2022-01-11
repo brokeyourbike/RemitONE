@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.4.0](https://www.github.com/brokeyourbike/remit-one-api-client-php/compare/v0.3.1...v0.4.0) (2022-01-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* allow more fields to be null
+
+### Bug Fixes
+
+* allow more fields to be null ([da8b151](https://www.github.com/brokeyourbike/remit-one-api-client-php/commit/da8b151be82407b5232fc26031aa193bf3595bf2))
+
 ### [0.3.1](https://www.github.com/brokeyourbike/remit-one-api-client-php/compare/v0.3.0...v0.3.1) (2022-01-07)
 
 
