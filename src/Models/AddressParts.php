@@ -16,17 +16,17 @@ use BrokeYourBike\RemitOne\Interfaces\DecodedAddressPartsInterface;
 class AddressParts implements DecodedAddressPartsInterface
 {
     public function __construct(
-        private string $remitter_building_no,
-        private string $remitter_address1,
-        private string $remitter_address2,
-        private string $remitter_city,
-        private string $remitter_state,
-        private string $remitter_postcode,
-        private string $remitter_country,
+        private ?string $remitter_building_no,
+        private ?string $remitter_address1,
+        private ?string $remitter_address2,
+        private ?string $remitter_city,
+        private ?string $remitter_state,
+        private ?string $remitter_postcode,
+        private ?string $remitter_country,
     ) {
     }
 
-    public function getBuildingNumber(): string
+    public function getBuildingNumber(): ?string
     {
         return $this->remitter_building_no;
     }
@@ -36,22 +36,22 @@ class AddressParts implements DecodedAddressPartsInterface
         return trim("{$this->remitter_address1} {$this->remitter_address2}");
     }
 
-    public function getCity(): string
+    public function getCity(): ?string
     {
         return $this->remitter_city;
     }
 
-    public function getState(): string
+    public function getState(): ?string
     {
         return $this->remitter_state;
     }
 
-    public function getPostcode(): string
+    public function getPostcode(): ?string
     {
         return $this->remitter_postcode;
     }
 
-    public function getCountry(): string
+    public function getCountry(): ?string
     {
         return $this->remitter_country;
     }

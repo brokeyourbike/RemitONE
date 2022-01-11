@@ -13,10 +13,10 @@ namespace BrokeYourBike\RemitOne\Interfaces;
  */
 interface DecodedAddressPartsInterface
 {
-    public function getBuildingNumber(): string;
-    public function getAddress(): string;
-    public function getCity(): string;
-    public function getState(): string;
-    public function getPostcode(): string;
-    public function getCountry(): string;
+    public function getBuildingNumber(): ?string;
+    public function getAddress(): ?string;
+    public function getCity(): ?string;
+    public function getState(): ?string;
+    public function getPostcode(): ?string;
+    public function getCountry(): ?string;
 }
