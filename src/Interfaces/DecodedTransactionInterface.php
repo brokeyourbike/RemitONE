@@ -58,8 +58,8 @@ interface DecodedTransactionInterface
     public function getBeneficiaryBranchThirdPartyName(): ?string;
     public function getBeneficiaryBranchThirdPartyCode(): ?string;
     public function getSendCountryIso(): string;
-    public function getSendCurrency(): string;
-    public function getSendAmount(): string;
+    public function getSendCurrency(): ?string;
+    public function getSendAmount(): ?string;
     public function getReceiveCountryIso(): string;
     public function getReceiveCurrency(): string;
     public function getReceiveAmount(): string;

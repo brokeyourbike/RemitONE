@@ -64,8 +64,8 @@ class Transaction implements DecodedTransactionInterface
         private ?string $remitter_gender,
 
         private string $send_country_iso,
-        private string $send_currency,
-        private string $send_amount,
+        private ?string $send_currency,
+        private ?string $send_amount,
         private string $receive_country_iso,
         private string $receive_currency,
         private string $receive_amount,
@@ -288,12 +288,12 @@ class Transaction implements DecodedTransactionInterface
         return $this->send_country_iso;
     }
 
-    public function getSendCurrency(): string
+    public function getSendCurrency(): ?string
     {
         return $this->send_currency;
     }
 
-    public function getSendAmount(): string
+    public function getSendAmount(): ?string
     {
         return $this->send_amount;
     }
