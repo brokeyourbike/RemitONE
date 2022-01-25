@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.5.0](https://www.github.com/brokeyourbike/remit-one-api-client-php/compare/v0.4.0...v0.5.0) (2022-01-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* `send_currency` and `send_amount` are not required
+
+### Bug Fixes
+
+* `send_currency` and `send_amount` are not required ([0e93ed6](https://www.github.com/brokeyourbike/remit-one-api-client-php/commit/0e93ed666b76616abceb164740977f9369ff20c5))
+
 ## [0.4.0](https://www.github.com/brokeyourbike/remit-one-api-client-php/compare/v0.3.1...v0.4.0) (2022-01-11)
 
 
