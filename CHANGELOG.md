@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.5.1](https://www.github.com/brokeyourbike/remit-one-api-client-php/compare/v0.5.0...v0.5.1) (2022-02-02)
+
+
+### Bug Fixes
+
+* make normalizer compatible with symfony ([544b7bf](https://www.github.com/brokeyourbike/remit-one-api-client-php/commit/544b7bf0c6b54c86b13f169629cf46ffaf8d059b))
+
 ## [0.5.0](https://www.github.com/brokeyourbike/remit-one-api-client-php/compare/v0.4.0...v0.5.0) (2022-01-25)
 
 
