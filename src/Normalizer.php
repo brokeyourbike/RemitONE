@@ -19,14 +19,16 @@ class Normalizer extends ObjectNormalizer
      * Normalizes the given data to an array. It's particularly useful during
      * the denormalization process.
      */
-    protected function prepareForDenormalization(object|array|null $data): array
+    protected function prepareForDenormalization(mixed $data): array
     {
         $normalized = (array) $data;
 
         // we map transactions to the object
         // it should contain list of transactions or be null
         // not a string
-        if (isset($normalized['result']['transactions']) &&
+        if (isset($normalized['result']) &&
+        is_array($normalized['result']) &&
+        isset($normalized['result']['transactions']) &&
         is_string($normalized['result']['transactions'])) {
             unset($normalized['result']['transactions']);
         }
