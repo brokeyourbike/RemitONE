@@ -102,4 +102,60 @@ class AcceptTransactionTest extends TestCase
         $this->assertSame(OperationResultStatusEnum::SUCCESS->value, $transactionDecoded->getOperationResult());
         $this->assertSame('some message', $transactionDecoded->getMessage());
     }
+
+    /** @test */
+    public function it_can_handle_unsuccess_response()
+    {
+        $transaction = $this->getMockBuilder(TransactionInterface::class)->getMock();
+        $transaction->method('getReference')->willReturn($this->reference);
+
+        /** @var TransactionInterface $transaction */
+        $this->assertInstanceOf(TransactionInterface::class, $transaction);
+
+        $mockedUser = $this->getMockBuilder(UserInterface::class)->getMock();
+        $mockedUser->method('getUrl')->willReturn('https://api.example/');
+        $mockedUser->method('getType')->willReturn(UserTypeEnum::BANK);
+        $mockedUser->method('getUsername')->willReturn($this->username);
+        $mockedUser->method('getPassword')->willReturn($this->password);
+        $mockedUser->method('getPin')->willReturn($this->pin);
+
+        $mockedResponse = $this->getMockBuilder(ResponseInterface::class)->getMock();
+        $mockedResponse->method('getStatusCode')->willReturn(200);
+        $mockedResponse->method('getBody')
+            ->willReturn('<?xml version="1.0" encoding="utf-8"?>
+            <response>
+                <status>'. StatusCodeEnum::ERROR->value  .'</status>
+                <result>
+                    <message>Bank name must be provided</message>
+                </result>
+            </response>');
+
+        /** @var \Mockery\MockInterface $mockedClient */
+        $mockedClient = \Mockery::mock(\GuzzleHttp\Client::class);
+        $mockedClient->shouldReceive('request')->withArgs([
+            'POST',
+            'https://api.example/transaction/acceptPayoutTransactions',
+            [
+                \GuzzleHttp\RequestOptions::FORM_PARAMS => [
+                    'trans_ref' => $this->reference,
+                    'username' => $this->username,
+                    'password' => $this->password,
+                    'pin' => $this->pin,
+                ],
+            ],
+        ])->once()->andReturn($mockedResponse);
+
+        /**
+         * @var UserInterface $mockedUser
+         * @var \GuzzleHttp\Client $mockedClient
+         * */
+        $api = new Client($mockedUser, $mockedClient);
+
+        $response = $api->acceptTransaction($transaction);
+
+
+        $this->assertInstanceOf(AcceptTransactionResponse::class, $response);
+        $this->assertSame(StatusCodeEnum::ERROR->value, $response->getStatus());
+        $this->assertSame('Bank name must be provided', $response->getResult()->getMessage());
+    }
 }

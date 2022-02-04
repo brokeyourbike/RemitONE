@@ -14,24 +14,30 @@ namespace BrokeYourBike\RemitOne\Models;
 class AcceptTransactionResult
 {
     public function __construct(
-        private int $total_count,
-        private int $success_count,
-        private int $failed_count,
+        private ?string $message,
+        private ?int $total_count,
+        private ?int $success_count,
+        private ?int $failed_count,
         private ?AcceptTransactionsWrapper $transactions,
     ) {
     }
 
-    public function getTotalCount(): int
+    public function getMessage(): ?string
+    {
+        return $this->message;
+    }
+
+    public function getTotalCount(): ?int
     {
         return $this->total_count;
     }
 
-    public function getSuccessCount(): int
+    public function getSuccessCount(): ?int
     {
         return $this->success_count;
     }
 
-    public function getFailedCount(): int
+    public function getFailedCount(): ?int
     {
         return $this->failed_count;
     }
