@@ -52,8 +52,8 @@ class ErrorTransactionTest extends TestCase
             <response>
             <status>'. StatusCodeEnum::SUCCESS->value  .'</status>
                 <result>
-                        <trans_ref>'. $this->reference .'</trans_ref>
-                        <error_result>'. OperationResultStatusEnum::SUCCESS->value  .'</error_result>
+                    <trans_ref>'. $this->reference .'</trans_ref>
+                    <error_result>'. OperationResultStatusEnum::SUCCESS->value  .'</error_result>
                 </result>
             </response>');
 
@@ -85,5 +85,61 @@ class ErrorTransactionTest extends TestCase
         $this->assertSame(StatusCodeEnum::SUCCESS->value, $response->getStatus());
         $this->assertSame($this->reference, $response->getResult()->getReference());
         $this->assertSame(OperationResultStatusEnum::SUCCESS->value, $response->getResult()->getErrorResult());
+    }
+
+    /** @test */
+    public function it_can_handle_unsuccess_response()
+    {
+        $transaction = $this->getMockBuilder(TransactionInterface::class)->getMock();
+        $transaction->method('getReference')->willReturn($this->reference);
+
+        /** @var TransactionInterface $transaction */
+        $this->assertInstanceOf(TransactionInterface::class, $transaction);
+
+        $mockedUser = $this->getMockBuilder(UserInterface::class)->getMock();
+        $mockedUser->method('getUrl')->willReturn('https://api.example/');
+        $mockedUser->method('getType')->willReturn(UserTypeEnum::BANK);
+        $mockedUser->method('getUsername')->willReturn($this->username);
+        $mockedUser->method('getPassword')->willReturn($this->password);
+        $mockedUser->method('getPin')->willReturn($this->pin);
+
+        $mockedResponse = $this->getMockBuilder(ResponseInterface::class)->getMock();
+        $mockedResponse->method('getStatusCode')->willReturn(200);
+        $mockedResponse->method('getBody')
+            ->willReturn('<?xml version="1.0" encoding="utf-8"?>
+            <response>
+            <status>'. StatusCodeEnum::ERROR->value  .'</status>
+                <result>
+                    <message>You have failed!</message>
+                </result>
+            </response>');
+
+        /** @var \Mockery\MockInterface $mockedClient */
+        $mockedClient = \Mockery::mock(\GuzzleHttp\Client::class);
+        $mockedClient->shouldReceive('request')->withArgs([
+            'POST',
+            'https://api.example/transaction/errorPayoutTransaction',
+            [
+                \GuzzleHttp\RequestOptions::FORM_PARAMS => [
+                    'trans_ref' => $this->reference,
+                    'error_reason' => $this->errorReason,
+                    'username' => $this->username,
+                    'password' => $this->password,
+                    'pin' => $this->pin,
+                ],
+            ],
+        ])->once()->andReturn($mockedResponse);
+
+        /**
+         * @var UserInterface $mockedUser
+         * @var \GuzzleHttp\Client $mockedClient
+         * */
+        $api = new Client($mockedUser, $mockedClient);
+
+        $response = $api->errorTransaction($transaction, $this->errorReason);
+
+        $this->assertInstanceOf(ErrorTransactionResponse::class, $response);
+        $this->assertSame(StatusCodeEnum::ERROR->value, $response->getStatus());
+        $this->assertSame('You have failed!', $response->getResult()->getMessage());
     }
 }

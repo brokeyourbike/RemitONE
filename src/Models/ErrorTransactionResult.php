@@ -14,18 +14,24 @@ namespace BrokeYourBike\RemitOne\Models;
 class ErrorTransactionResult
 {
     public function __construct(
-        private string $trans_ref,
-        private string $error_result,
+        private ?string $trans_ref,
+        private ?string $error_result,
+        private ?string $message,
     ) {
     }
 
-    public function getReference(): string
+    public function getReference(): ?string
     {
         return $this->trans_ref;
     }
 
-    public function getErrorResult(): string
+    public function getErrorResult(): ?string
     {
         return $this->error_result;
+    }
+
+    public function getMessage(): ?string
+    {
+        return $this->message;
     }
 }
