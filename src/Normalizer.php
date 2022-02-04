@@ -26,10 +26,9 @@ class Normalizer extends ObjectNormalizer
         // we map transactions to the object
         // it should contain list of transactions or be null
         // not a string
-        if (isset($normalized['result']) &&
-        is_array($normalized['result']) &&
-        isset($normalized['result']['transactions']) &&
-        is_string($normalized['result']['transactions'])) {
+        $transactions = $normalized['result']['transactions'] ?? false;
+        
+        if ($transactions && is_string($transactions)) {
             unset($normalized['result']['transactions']);
         }
 
