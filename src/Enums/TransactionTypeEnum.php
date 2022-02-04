@@ -27,4 +27,6 @@ enum TransactionTypeEnum: string
      * Mobile money.
      */
     case MOBILE = 'Mobile Transfer';
+
+    case CARD = 'Card Transfer';
 }
