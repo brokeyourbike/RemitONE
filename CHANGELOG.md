@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.5.2](https://www.github.com/brokeyourbike/remit-one-api-client-php/compare/v0.5.1...v0.5.2) (2022-02-04)
+
+
+### Bug Fixes
+
+* add card transfer type ([2a49fd8](https://www.github.com/brokeyourbike/remit-one-api-client-php/commit/2a49fd858464b851dd1a9eb9126240068e45f62a))
+
 ### [0.5.1](https://www.github.com/brokeyourbike/remit-one-api-client-php/compare/v0.5.0...v0.5.1) (2022-02-02)
 
 
