@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.5.3](https://www.github.com/brokeyourbike/remit-one-api-client-php/compare/v0.5.2...v0.5.3) (2022-02-04)
+
+
+### Bug Fixes
+
+* error result can fail ([183f923](https://www.github.com/brokeyourbike/remit-one-api-client-php/commit/183f923cda1af7c7a685dbb80f7c122b7f97f373))
+
 ### [0.5.2](https://www.github.com/brokeyourbike/remit-one-api-client-php/compare/v0.5.1...v0.5.2) (2022-02-04)
 
 
