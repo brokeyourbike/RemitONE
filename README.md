@@ -28,5 +28,8 @@ $apiClient = new Client($user, $httpClient);
 $apiClient->getPayoutTransactions();
 ```
 
+## Authors
+- [Ivan Stasiuk](https://github.com/brokeyourbike) | [Twitter](https://twitter.com/brokeyourbike) | [stasi.uk](https://stasi.uk)
+
 ## License
 [Mozilla Public License v2.0](https://github.com/brokeyourbike/remit-one-api-client-php/blob/main/LICENSE)
