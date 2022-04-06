@@ -44,7 +44,7 @@
         "mockery/mockery": "^1.4",
         "nesbot/carbon": "^2.55"
     },
-    "version": "0.5.4",
+    "version": "0.5.5",
     "config": {
         "allow-plugins": {
             "bamarni/composer-bin-plugin": true
