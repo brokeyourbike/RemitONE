@@ -1,5 +1,17 @@
 # Changelog
 
+### [0.5.5](https://www.github.com/brokeyourbike/remit-one-api-client-php/compare/v0.5.4...v0.5.5) (2022-04-06)
+
+
+### Bug Fixes
+
+* add new remitter id type ([46a3f20](https://www.github.com/brokeyourbike/remit-one-api-client-php/commit/46a3f201b0212a20f48cc58be30dcea9c38f1506))
+
+
+### Miscellaneous Chores
+
+* badges in 1 line ([f9bc8d5](https://www.github.com/brokeyourbike/remit-one-api-client-php/commit/f9bc8d546dad888f360543d938c00ba0e3adcc22))
+
 ### [0.5.4](https://www.github.com/brokeyourbike/remit-one-api-client-php/compare/v0.5.3...v0.5.4) (2022-02-04)
 
 
