@@ -42,7 +42,8 @@
         "bamarni/composer-bin-plugin": "^1.4",
         "phpunit/phpunit": "^9",
         "mockery/mockery": "^1.4",
-        "nesbot/carbon": "^2.55"
+        "nesbot/carbon": "^2.55",
+        "phpdocumentor/reflection-docblock": "^5.3"
     },
     "version": "0.5.5",
     "config": {
