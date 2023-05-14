@@ -1,5 +1,17 @@
 # Changelog
 
+### [0.5.6](https://www.github.com/brokeyourbike/remit-one-api-client-php/compare/v0.5.5...v0.5.6) (2023-05-14)
+
+
+### Bug Fixes
+
+* `phpdocumentor/reflection-docblock` ([d34e24f](https://www.github.com/brokeyourbike/remit-one-api-client-php/commit/d34e24fe7f171c2cc0f6aaced757326d4a55b35c))
+
+
+### Miscellaneous Chores
+
+* badges ([6c74399](https://www.github.com/brokeyourbike/remit-one-api-client-php/commit/6c74399a0c27378f25ab7ad8133f64597c2ce249))
+
 ### [0.5.5](https://www.github.com/brokeyourbike/remit-one-api-client-php/compare/v0.5.4...v0.5.5) (2022-04-06)
 
 
