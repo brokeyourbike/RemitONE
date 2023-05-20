@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.5.7](https://www.github.com/brokeyourbike/remit-one-api-client-php/compare/v0.5.6...v0.5.7) (2023-05-20)
+
+
+### Miscellaneous Chores
+
+* button ([2c2e2dc](https://www.github.com/brokeyourbike/remit-one-api-client-php/commit/2c2e2dc622a6cef2b6e9440c32cc591856e81752))
+
 ### [0.5.6](https://www.github.com/brokeyourbike/remit-one-api-client-php/compare/v0.5.5...v0.5.6) (2023-05-14)
 
 
