@@ -46,6 +46,7 @@ class Transaction implements DecodedTransactionInterface
         private ?string $benef_bank_third_party_id,
         private ?string $benef_bank_third_party_name,
         private ?string $benef_bank_third_party_code,
+        private ?string $benef_bank_routing_transit_number,
         private ?string $benef_branch_third_party_id,
         private ?string $benef_branch_third_party_name,
         private ?string $benef_branch_third_party_code,
@@ -266,6 +267,11 @@ class Transaction implements DecodedTransactionInterface
     public function getBeneficiaryBankThirdPartyCode(): ?string
     {
         return $this->benef_bank_third_party_code;
+    }
+
+    public function getBeneficiaryBankRoutingTransitNumber(): ?string
+    {
+        return $this->benef_bank_routing_transit_number;
     }
 
     public function getBeneficiaryBranchThirdPartyId(): ?string
