@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.6.0](https://www.github.com/brokeyourbike/remit-one-api-client-php/compare/v0.5.6...v0.6.0) (2023-08-30)
+
+
+### Features
+
+* routing number ([b52ec2b](https://www.github.com/brokeyourbike/remit-one-api-client-php/commit/b52ec2bbb9f593aa6b9e5cc40f5ec0e9255db26f))
+
+
+### Bug Fixes
+
+* use specific serialiser ([4a8f83c](https://www.github.com/brokeyourbike/remit-one-api-client-php/commit/4a8f83cc6f2500b6d09eb52693d9109c47f07e7c))
+
+
+### Miscellaneous Chores
+
+* button ([2c2e2dc](https://www.github.com/brokeyourbike/remit-one-api-client-php/commit/2c2e2dc622a6cef2b6e9440c32cc591856e81752))
+
 ### [0.5.6](https://www.github.com/brokeyourbike/remit-one-api-client-php/compare/v0.5.5...v0.5.6) (2023-05-14)
 
 
