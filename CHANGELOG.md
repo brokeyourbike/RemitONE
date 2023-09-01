@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.7.0](https://www.github.com/brokeyourbike/remit-one-api-client-php/compare/v0.6.0...v0.7.0) (2023-09-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* add routing number
+
+### Bug Fixes
+
+* add routing number ([3bce007](https://www.github.com/brokeyourbike/remit-one-api-client-php/commit/3bce0071116d0e3b6638b9e145ef248932794983))
+
 ## [0.6.0](https://www.github.com/brokeyourbike/remit-one-api-client-php/compare/v0.5.6...v0.6.0) (2023-08-30)
 
 
