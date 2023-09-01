@@ -54,6 +54,7 @@ interface DecodedTransactionInterface
     public function getBeneficiaryBankThirdPartyId(): ?string;
     public function getBeneficiaryBankThirdPartyName(): ?string;
     public function getBeneficiaryBankThirdPartyCode(): ?string;
+    public function getBeneficiaryBankRoutingTransitNumber(): ?string;
     public function getBeneficiaryBranchThirdPartyId(): ?string;
     public function getBeneficiaryBranchThirdPartyName(): ?string;
     public function getBeneficiaryBranchThirdPartyCode(): ?string;
